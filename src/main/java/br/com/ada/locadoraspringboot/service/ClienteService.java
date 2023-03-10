@@ -5,6 +5,8 @@ import br.com.ada.locadoraspringboot.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ClienteService {
 
@@ -15,4 +17,7 @@ public class ClienteService {
         this.clienteRepository.save(cliente);
     }
 
+    public List<Cliente> listarTodos() {
+        return this.clienteRepository.findAll();
+    }
 }
