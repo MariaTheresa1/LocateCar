@@ -19,8 +19,13 @@ public class ClienteController {
     private ClienteService clienteService;
 
     @PostMapping("/")
-    public void createCliente(@RequestBody Cliente cliente){
-        this.clienteService.createCliente(cliente);
+    public ResponseEntity<String> createCliente(@RequestBody Cliente cliente){
+        try {
+            this.clienteService.createCliente(cliente);
+            return ResponseEntity.status(HttpStatus.CREATED).body("Cliente criado.");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
     }
 
     @GetMapping("/todos")
