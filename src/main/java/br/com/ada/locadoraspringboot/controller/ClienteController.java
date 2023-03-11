@@ -28,7 +28,6 @@ public class ClienteController {
 
     @GetMapping("/cliente/add")
     public String addCliente(Model model, Cliente cliente) {
-        model.addAttribute("add", Boolean.TRUE);
         model.addAttribute("cliente", Objects.nonNull(cliente) ? cliente : new Cliente());
         return "cliente-add";
     }
@@ -56,8 +55,7 @@ public class ClienteController {
     public String mostrarEdicaoCliente(Model model, @PathVariable("clienteId") Long clienteId) {
         Optional<Cliente> optionalCliente = this.clienteService.buscarClientePorId(clienteId);
         optionalCliente.ifPresent(cliente -> model.addAttribute("cliente", cliente));
-        model.addAttribute("add", Boolean.FALSE);
-        return "cliente-add";
+        return "cliente-edit";
     }
 
     @PutMapping("/cliente/{clienteId}/edit")

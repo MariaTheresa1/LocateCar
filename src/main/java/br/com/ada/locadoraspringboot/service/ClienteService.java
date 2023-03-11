@@ -29,10 +29,6 @@ public class ClienteService {
         return this.clienteRepository.findById(id);
     }
 
-    public Optional<Cliente> buscarClientePeloCpf(String cpf) {
-        return this.clienteRepository.findByCpfContaining(cpf);
-    }
-
     public void removerClientePorId(Long id) {
         this.clienteRepository.deleteById(id);
     }
